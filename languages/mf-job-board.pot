@@ -1,0 +1,141 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MF Job Board 1.6.0\n"
+"Report-Msgid-Bugs-To: https://mfdsgn.com/\n"
+"POT-Creation-Date: 2026-06-17 08:11+0000\n"
+"PO-Revision-Date: 2026-06-17 08:11+0000\n"
+"Language-Team: MF\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: mf-job-board\n"
+
+msgid "Vacancies"
+msgstr ""
+
+msgid "Vacancy"
+msgstr ""
+
+msgid "Add new"
+msgstr ""
+
+msgid "Add new vacancy"
+msgstr ""
+
+msgid "Edit vacancy"
+msgstr ""
+
+msgid "New vacancy"
+msgstr ""
+
+msgid "View vacancy"
+msgstr ""
+
+msgid "Search vacancies"
+msgstr ""
+
+msgid "No vacancies found"
+msgstr ""
+
+msgid "No vacancies in the trash"
+msgstr ""
+
+msgid "All vacancies"
+msgstr ""
+
+msgid "Categories"
+msgstr ""
+
+msgid "Category"
+msgstr ""
+
+msgid "Catch phrase (subtitle)"
+msgstr ""
+
+msgid "Hours per week"
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+msgid "Employment type"
+msgstr ""
+
+msgid "Vacancy details"
+msgstr ""
+
+msgid ""
+"Tip: write the tasks, \"why this fits you\" and \"what we offer\" in the "
+"main content field above, using headings and lists."
+msgstr ""
+
+msgid "Hours"
+msgstr ""
+
+msgid "Open application"
+msgstr ""
+
+msgid "Didn't find a suitable position?"
+msgstr ""
+
+msgid ""
+"We grow fast and are always looking for new talent. Send an open application"
+" and tell us how you help entrepreneurs move forward."
+msgstr ""
+
+msgid "Questions? Email"
+msgstr ""
+
+msgid "Open positions"
+msgstr ""
+
+msgid ""
+"There are no open positions at the moment. Check back soon — we are growing "
+"fast."
+msgstr ""
+
+msgid "Back to all vacancies"
+msgstr ""
+
+msgid "Application: %s"
+msgstr ""
+
+msgid "Interested?"
+msgstr ""
+
+msgid ""
+"Do you want to contribute to a future in which no entrepreneur stands alone?"
+" Send your CV and a short motivation, mentioning the position title."
+msgstr ""
+
+msgid "Apply for this position"
+msgstr ""
+
+msgid "Or email directly to"
+msgstr ""
+
+msgid "MF Job Board — Settings"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Listing page"
+msgstr ""
+
+msgid "— Detect automatically —"
+msgstr ""
+
+msgid ""
+"The page that contains the [mk_vacatures] shortcode. \"Back to all "
+"vacancies\" on the detail page points here, and any archive URLs are "
+"redirected here. Leave on \"Detect automatically\" to let the plugin find "
+"it."
+msgstr ""
+
+msgid "Application email address"
+msgstr ""
+
+msgid "Leave empty to use the default (%s)."
+msgstr ""

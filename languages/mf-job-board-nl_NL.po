@@ -1,0 +1,156 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MF Job Board 1.6.0\n"
+"Report-Msgid-Bugs-To: https://mfdsgn.com/\n"
+"POT-Creation-Date: 2026-06-17 08:11+0000\n"
+"PO-Revision-Date: 2026-06-17 08:11+0000\n"
+"Language-Team: MF\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: mf-job-board\n"
+
+msgid "Vacancies"
+msgstr "Vacatures"
+
+msgid "Vacancy"
+msgstr "Vacature"
+
+msgid "Add new"
+msgstr "Nieuwe vacature"
+
+msgid "Add new vacancy"
+msgstr "Nieuwe vacature toevoegen"
+
+msgid "Edit vacancy"
+msgstr "Vacature bewerken"
+
+msgid "New vacancy"
+msgstr "Nieuwe vacature"
+
+msgid "View vacancy"
+msgstr "Vacature bekijken"
+
+msgid "Search vacancies"
+msgstr "Vacatures zoeken"
+
+msgid "No vacancies found"
+msgstr "Geen vacatures gevonden"
+
+msgid "No vacancies in the trash"
+msgstr "Geen vacatures in de prullenbak"
+
+msgid "All vacancies"
+msgstr "Alle vacatures"
+
+msgid "Categories"
+msgstr "Categorieën"
+
+msgid "Category"
+msgstr "Categorie"
+
+msgid "Catch phrase (subtitle)"
+msgstr "Pakkende zin (subtitel)"
+
+msgid "Hours per week"
+msgstr "Uren per week"
+
+msgid "Location"
+msgstr "Locatie"
+
+msgid "Employment type"
+msgstr "Dienstverband"
+
+msgid "Vacancy details"
+msgstr "Vacaturedetails"
+
+msgid ""
+"Tip: write the tasks, \"why this fits you\" and \"what we offer\" in the "
+"main content field above, using headings and lists."
+msgstr ""
+"Tip: de taken, \"waarom dit bij je past\" en \"wat bieden wij\" schrijf je "
+"in het hoofdtekstveld hierboven, met koppen en lijsten."
+
+msgid "Hours"
+msgstr "Uren"
+
+msgid "Open application"
+msgstr "Open sollicitatie"
+
+msgid "Didn't find a suitable position?"
+msgstr "Geen passende functie gevonden?"
+
+msgid ""
+"We grow fast and are always looking for new talent. Send an open application"
+" and tell us how you help entrepreneurs move forward."
+msgstr ""
+"We groeien snel en zoeken doorlopend nieuw talent. Stuur een open "
+"sollicitatie en vertel ons waar jij ondernemers mee vooruit helpt."
+
+msgid "Questions? Email"
+msgstr "Vragen? Mail"
+
+msgid "Open positions"
+msgstr "Open posities"
+
+msgid ""
+"There are no open positions at the moment. Check back soon — we are growing "
+"fast."
+msgstr ""
+"Op dit moment zijn er geen openstaande vacatures. Kom snel terug — we "
+"groeien hard."
+
+msgid "Back to all vacancies"
+msgstr "Terug naar alle vacatures"
+
+msgid "Application: %s"
+msgstr "Sollicitatie: %s"
+
+msgid "Interested?"
+msgstr "Interesse?"
+
+msgid ""
+"Do you want to contribute to a future in which no entrepreneur stands alone?"
+" Send your CV and a short motivation, mentioning the position title."
+msgstr ""
+"Wil jij bijdragen aan een toekomst waarin geen ondernemer er alleen voor "
+"staat? Stuur je cv en een korte motivatie, onder vermelding van de "
+"functienaam."
+
+msgid "Apply for this position"
+msgstr "Solliciteer op deze functie"
+
+msgid "Or email directly to"
+msgstr "Of mail rechtstreeks naar"
+
+msgid "MF Job Board — Settings"
+msgstr "MF Job Board — Instellingen"
+
+msgid "Settings"
+msgstr "Instellingen"
+
+msgid "Listing page"
+msgstr "Overzichtspagina"
+
+msgid "— Detect automatically —"
+msgstr "— Automatisch detecteren —"
+
+msgid ""
+"The page that contains the [mk_vacatures] shortcode. \"Back to all "
+"vacancies\" on the detail page points here, and any archive URLs are "
+"redirected here. Leave on \"Detect automatically\" to let the plugin find "
+"it."
+msgstr ""
+"De pagina met de shortcode [mk_vacatures]. \"Terug naar alle vacatures\" op "
+"de detailpagina wijst hierheen, en eventuele archief-URL's worden hierheen "
+"omgeleid. Laat op \"Automatisch detecteren\" staan om de pagina zelf te "
+"laten vinden."
+
+msgid "Application email address"
+msgstr "Sollicitatie e-mailadres"
+
+msgid "Leave empty to use the default (%s)."
+msgstr "Leeg laten om de standaard (%s) te gebruiken."

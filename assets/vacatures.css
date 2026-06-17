@@ -1,0 +1,332 @@
+/* =========================================================================
+   MK Vacatures — front-end styling (lijstweergave)
+   Alles is gescoped onder .mkv zodat het je thema / Elementor niet raakt.
+   LETTERTYPE: bewust niet gezet — komt volledig uit je thema.
+   Kleuren = huisstijl MijnKompaan. Pas alles aan via de variabelen hieronder.
+   ========================================================================= */
+
+.mkv {
+	--mkv-ink:        #071F1E; /* MK Teal — donker / tekst / vlakken   */
+	--mkv-ink-soft:   #54615E; /* bodytekst (teal-grijs)               */
+	--mkv-muted:      #97A19E; /* nummers / subtiele meta              */
+	--mkv-accent:     #5E8DF7; /* MK Blue — teksten, iconen, kaders    */
+	--mkv-accent-ink: #3F6FE0; /* MK Blue, donkerder (hover/links)     */
+	--mkv-cta:        #00AD6D; /* MK Green — ALLEEN voor CTA-knoppen   */
+	--mkv-cta-ink:    #00935D; /* MK Green, donkerder (hover)          */
+	--mkv-blue:       #5E8DF7; /* MK Blue — labels / eyebrow           */
+	--mkv-orange:     #F75F2B; /* MK Orange — reserve-accent           */
+	--mkv-paper:      #F4F6F5; /* zachte achtergrond (koel)            */
+	--mkv-card:       #FFFFFF; /* MK White                             */
+	--mkv-line:       #E3E8E6; /* haarlijn                             */
+	--mkv-radius:     16px;
+
+	color: var(--mkv-ink-soft);
+	line-height: 1.6;
+	font-size: 17px;
+	-webkit-font-smoothing: antialiased;
+}
+
+.mkv *,
+.mkv *::before,
+.mkv *::after { box-sizing: border-box; }
+
+.mkv a { color: inherit; text-decoration: none; }
+
+/* ---- Layout containers -------------------------------------------------- */
+/* Shortcode-lijst op een (thema)pagina: gecentreerd, leesbare maatvoering. */
+.mkv-shortcode { max-width: 1100px; margin: 0 auto; }
+/* Detailpagina-inhoud (geïnjecteerd in de thema-inhoud). */
+.mkv-detail { max-width: 880px; margin: 0 auto; padding: clamp(28px, 4vw, 52px) 0; }
+
+/* ---- Eyebrow ------------------------------------------------------------ */
+.mkv-detail__eyebrow {
+	display: inline-block;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+	color: var(--mkv-blue);
+	margin-bottom: 16px;
+}
+
+/* ---- Detail: subtitel onder de thema-titel ------------------------------ */
+.mkv-detail__media {
+	margin: 0 0 24px;
+	border-radius: var(--mkv-radius);
+	overflow: hidden;
+}
+.mkv-detail__media img { width: 100%; height: auto; display: block; }
+.mkv-detail__subtitle {
+	font-size: clamp(18px, 2.4vw, 22px);
+	line-height: 1.35;
+	color: var(--mkv-ink-soft);
+	margin: 0 0 18px;
+	max-width: 60ch;
+}
+
+/* ---- Sectiekop: Open posities (N) --------------------------------------- */
+.mkv-listhead {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 16px;
+	flex-wrap: wrap;
+	padding-bottom: 16px;
+	border-bottom: 1px solid var(--mkv-ink);
+}
+.mkv .mkv-listhead__title {
+	font-size: clamp(22px, 3vw, 28px);
+	font-weight: 800;
+	letter-spacing: -.01em;
+	color: var(--mkv-ink) !important;
+	margin: 0;
+}
+.mkv-listhead__count { color: var(--mkv-muted); font-weight: 600; }
+.mkv-listhead__info { font-size: 14px; color: var(--mkv-ink-soft); }
+
+/* ---- Lijst + rijen ------------------------------------------------------ */
+.mkv-list { margin: 0 0 clamp(36px, 5vw, 56px); }
+
+.mkv-row {
+	display: flex;
+	align-items: center;
+	gap: 22px;
+	padding: 22px 12px;
+	border-bottom: 1px solid var(--mkv-line);
+	transition: background .16s ease;
+}
+.mkv-row:hover,
+.mkv-row:focus-visible { background: var(--mkv-paper); }
+
+.mkv-row__num {
+	flex: 0 0 auto;
+	font-size: 14px;
+	font-weight: 700;
+	color: var(--mkv-muted);
+	font-variant-numeric: tabular-nums;
+}
+
+.mkv-row__thumb {
+	flex: 0 0 auto;
+	width: 104px;
+	height: 76px;
+	border-radius: 12px;
+	overflow: hidden;
+	background: var(--mkv-paper);
+}
+.mkv-row__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.mkv-row__main { flex: 1 1 auto; min-width: 0; }
+
+.mkv-row__title {
+	display: block;
+	font-size: clamp(20px, 2.4vw, 25px);
+	font-weight: 800;
+	letter-spacing: -.01em;
+	color: var(--mkv-ink);
+	line-height: 1.2;
+}
+.mkv-row__desc {
+	display: block;
+	margin-top: 6px;
+	font-size: 15.5px;
+	color: var(--mkv-ink-soft);
+	max-width: 54ch;
+}
+
+.mkv-row__aside { flex: 0 0 auto; width: 200px; text-align: right; }
+.mkv-row__cat {
+	display: block;
+	font-size: 15px;
+	font-weight: 800;
+	color: var(--mkv-ink);
+}
+.mkv-row__meta {
+	display: block;
+	margin-top: 5px;
+	font-size: 13.5px;
+	color: var(--mkv-ink-soft);
+}
+
+.mkv-row__arrow {
+	flex: 0 0 auto;
+	width: 50px;
+	height: 50px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid var(--mkv-line);
+	border-radius: 50%;
+	color: var(--mkv-ink);
+	background: var(--mkv-card);
+	transition: background .18s ease, color .18s ease, border-color .18s ease, transform .18s ease;
+}
+.mkv-row:hover .mkv-row__arrow,
+.mkv-row:focus-visible .mkv-row__arrow {
+	background: var(--mkv-accent);
+	border-color: var(--mkv-accent);
+	color: #fff;
+	transform: translateX(3px);
+}
+
+/* ---- Open sollicitatie-blok --------------------------------------------- */
+.mkv-open {
+	background: var(--mkv-ink);
+	color: #fff;
+	border-radius: 22px;
+	padding: clamp(32px, 4.5vw, 52px);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 32px;
+	flex-wrap: wrap;
+}
+.mkv-open__title {
+	color: #fff !important;
+	font-size: clamp(26px, 3.4vw, 36px);
+	font-weight: 800;
+	letter-spacing: -.01em;
+	line-height: 1.1;
+	margin: 0 0 14px;
+	max-width: 16ch;
+}
+.mkv-open__text p { margin: 0; color: #C5D0CE; max-width: 48ch; }
+.mkv-open__mail { margin-top: 18px !important; font-size: 14px; color: #C5D0CE; }
+.mkv-open__mail a { color: #fff !important; text-decoration: underline; }
+
+/* ---- Knoppen ------------------------------------------------------------ */
+/* !important omdat het thema alle <a> in de content een blauwe linkkleur geeft. */
+.mkv .mkv-btn,
+.mkv .mkv-btn:link,
+.mkv .mkv-btn:visited,
+.mkv .mkv-btn:hover,
+.mkv .mkv-btn:focus,
+.mkv .mkv-btn:active {
+	display: inline-block;
+	text-align: center;
+	background: var(--mkv-cta);
+	color: #fff !important;
+	font-weight: 700;
+	padding: 14px 22px;
+	border-radius: 10px;
+	text-decoration: none;
+	transition: background .16s ease, transform .16s ease;
+}
+.mkv .mkv-btn svg { stroke: #fff; }
+.mkv .mkv-btn:hover { background: var(--mkv-cta-ink); transform: translateY(-1px); }
+.mkv .mkv-btn--lg {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 16px 26px;
+	font-size: 16px;
+	white-space: nowrap;
+}
+
+/* ---- Lege staat --------------------------------------------------------- */
+.mkv-empty {
+	background: var(--mkv-paper);
+	border: 1px dashed var(--mkv-line);
+	border-radius: var(--mkv-radius);
+	padding: 32px;
+	text-align: center;
+	margin-bottom: 32px;
+}
+
+/* ---- Chips (detailpagina) ----------------------------------------------- */
+.mkv-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; }
+.mkv-chip {
+	display: inline-flex;
+	align-items: center;
+	padding: 5px 12px 5px 30px;
+	background: var(--mkv-paper);
+	border: 1px solid var(--mkv-line);
+	border-radius: 999px;
+	font-size: 13.5px;
+	font-weight: 600;
+	color: var(--mkv-ink);
+	background-repeat: no-repeat;
+	background-position: 11px center;
+	background-size: 14px 14px;
+}
+.mkv-chip--clock {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23071F1E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E");
+}
+.mkv-chip--location {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23071F1E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z'/%3E%3Ccircle cx='12' cy='10' r='2.5'/%3E%3C/svg%3E");
+}
+.mkv-chip--briefcase {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23071F1E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='7' width='18' height='13' rx='2'/%3E%3Cpath d='M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2'/%3E%3C/svg%3E");
+}
+
+/* ---- Detailpagina: inhoud (geïnjecteerd in thema-inhoud) ---------------- */
+.mkv-single__content { font-size: 17px; }
+.mkv-single__content > *:first-child { margin-top: 0; }
+.mkv .mkv-single__content h3 {
+	font-size: 21px;
+	font-weight: 800;
+	color: var(--mkv-ink) !important;
+	letter-spacing: -.01em;
+	margin: 34px 0 12px;
+}
+.mkv-single__content h3::before {
+	content: "";
+	display: block;
+	width: 34px;
+	height: 3px;
+	background: var(--mkv-accent);
+	border-radius: 2px;
+	margin-bottom: 12px;
+}
+.mkv-single__content p { margin: 0 0 16px; }
+.mkv-single__content ul { list-style: none; margin: 0 0 18px; padding: 0; }
+.mkv-single__content li { position: relative; padding-left: 28px; margin-bottom: 10px; }
+.mkv-single__content li::before {
+	content: "";
+	position: absolute;
+	left: 4px;
+	top: 9px;
+	width: 8px;
+	height: 8px;
+	border: 2px solid var(--mkv-accent);
+	border-radius: 50%;
+}
+
+/* ---- Sollicitatieblok detailpagina (volledige breedte) ------------------ */
+/* Kleuren met !important omdat het thema h2 (#444) en links (blauw) forceert. */
+.mkv-apply {
+	background: var(--mkv-ink);
+	color: #fff;
+	border-radius: var(--mkv-radius);
+	padding: clamp(28px, 4vw, 44px);
+	margin: 40px 0 0;
+	text-align: center;
+}
+.mkv .mkv-apply__title { font-size: clamp(24px, 3vw, 30px); font-weight: 800; margin: 0 0 12px; color: #fff !important; }
+.mkv-apply__text  { font-size: 16px; color: #C5D0CE !important; margin: 0 auto 22px; max-width: 52ch; }
+.mkv-apply__meta { font-size: 13.5px; color: #93A09D !important; margin: 18px 0 0; }
+.mkv .mkv-apply__meta a { color: #fff !important; text-decoration: underline; }
+.mkv-back { margin: 24px 0 0; font-weight: 600; }
+.mkv .mkv-back a { color: var(--mkv-accent-ink) !important; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+
+/* ---- Focus / toegankelijkheid ------------------------------------------- */
+.mkv a:focus-visible,
+.mkv .mkv-btn:focus-visible { outline: 3px solid var(--mkv-accent); outline-offset: 3px; border-radius: 10px; }
+
+/* ---- Responsive --------------------------------------------------------- */
+@media (max-width: 720px) {
+	.mkv-row { flex-wrap: wrap; gap: 14px; padding: 20px 4px; }
+	.mkv-row__num   { order: 1; }
+	.mkv-row__thumb { order: 2; width: 72px; height: 56px; }
+	.mkv-row__main  { order: 3; flex: 1 1 50%; }
+	.mkv-row__arrow { order: 4; width: 42px; height: 42px; }
+	.mkv-row__aside { order: 5; flex: 1 1 100%; width: auto; text-align: left; }
+	.mkv-row__cat   { display: inline; }
+	.mkv-row__meta  { display: inline; margin-top: 0; }
+	.mkv-row__cat::after { content: " · "; color: var(--mkv-muted); }
+	.mkv-open { flex-direction: column; align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.mkv * { transition: none !important; }
+}
