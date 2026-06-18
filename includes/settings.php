@@ -22,8 +22,21 @@ add_action( 'admin_menu', 'mkv_register_settings_page' );
 function mkv_register_settings() {
 	register_setting( 'mkv_settings', 'mkv_listing_page_id', array( 'sanitize_callback' => 'absint', 'default' => 0 ) );
 	register_setting( 'mkv_settings', 'mkv_apply_email_opt', array( 'sanitize_callback' => 'sanitize_email', 'default' => '' ) );
+	register_setting( 'mkv_settings', 'mkv_accent_color', array( 'sanitize_callback' => 'mkv_sanitize_hex_color', 'default' => '' ) );
+	register_setting( 'mkv_settings', 'mkv_cta_color', array( 'sanitize_callback' => 'mkv_sanitize_hex_color', 'default' => '' ) );
 }
 add_action( 'admin_init', 'mkv_register_settings' );
+
+/** Color picker alleen op de instellingenpagina laden. */
+function mkv_settings_admin_assets( $hook ) {
+	if ( 'vacature_page_mkv-settings' !== $hook ) {
+		return;
+	}
+	wp_enqueue_style( 'wp-color-picker' );
+	wp_enqueue_script( 'wp-color-picker' );
+	wp_add_inline_script( 'wp-color-picker', 'jQuery(function($){$(".mkv-color-field").wpColorPicker();});' );
+}
+add_action( 'admin_enqueue_scripts', 'mkv_settings_admin_assets' );
 
 function mkv_render_settings_page() {
 	if ( ! current_user_can( 'manage_options' ) ) {
@@ -31,6 +44,8 @@ function mkv_render_settings_page() {
 	}
 	$listing_id = (int) get_option( 'mkv_listing_page_id' );
 	$email      = get_option( 'mkv_apply_email_opt' );
+	$accent     = get_option( 'mkv_accent_color' );
+	$cta        = get_option( 'mkv_cta_color' );
 	?>
 	<div class="wrap">
 		<h1><?php esc_html_e( 'MF Job Board — Settings', 'mf-job-board' ); ?></h1>
@@ -64,6 +79,20 @@ function mkv_render_settings_page() {
 							printf( esc_html__( 'Leave empty to use the default (%s).', 'mf-job-board' ), esc_html( MKV_APPLY_EMAIL ) );
 							?>
 						</p>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="mkv_accent_color"><?php esc_html_e( 'Accent color', 'mf-job-board' ); ?></label></th>
+					<td>
+						<input type="text" name="mkv_accent_color" id="mkv_accent_color" class="mkv-color-field" value="<?php echo esc_attr( $accent ); ?>" data-default-color="<?php echo esc_attr( MKV_DEFAULT_ACCENT ); ?>" placeholder="<?php echo esc_attr( MKV_DEFAULT_ACCENT ); ?>" />
+						<p class="description"><?php esc_html_e( 'Dominant color: heading rule, bullets, arrow icons and links on the list page. Leave empty for the default.', 'mf-job-board' ); ?></p>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="mkv_cta_color"><?php esc_html_e( 'CTA button color', 'mf-job-board' ); ?></label></th>
+					<td>
+						<input type="text" name="mkv_cta_color" id="mkv_cta_color" class="mkv-color-field" value="<?php echo esc_attr( $cta ); ?>" data-default-color="<?php echo esc_attr( MKV_DEFAULT_CTA ); ?>" placeholder="<?php echo esc_attr( MKV_DEFAULT_CTA ); ?>" />
+						<p class="description"><?php esc_html_e( 'Color of the apply / open-application buttons (Solliciteer / Open sollicitatie). Leave empty for the default.', 'mf-job-board' ); ?></p>
 					</td>
 				</tr>
 			</table>

@@ -3,7 +3,7 @@
  * Plugin Name:       MF Job Board
  * Plugin URI:        https://mfdsgn.com/
  * Description:       Self-contained job board for WordPress + Elementor. No external plugins. Show the list with [mk_vacatures] (alias [mf_jobs]) on a page; the detail page runs through the theme (header, page-banner, footer) with clean content — no post meta or author box. Available in English, Dutch and Turkish.
- * Version:           1.6.1
+ * Version:           1.7.0
  * Author:            MF
  * Text Domain:       mf-job-board
  * Domain Path:       /languages
@@ -24,13 +24,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MKV_VERSION', '1.6.1' );
+define( 'MKV_VERSION', '1.7.0' );
 define( 'MKV_PATH', plugin_dir_path( __FILE__ ) );
 define( 'MKV_URL', plugin_dir_url( __FILE__ ) );
 
 /** Standaard sollicitatie-mailadres. Te overschrijven in Instellingen of via de filter. */
 if ( ! defined( 'MKV_APPLY_EMAIL' ) ) {
-	define( 'MKV_APPLY_EMAIL', 'vacatures@mijnkompaan.nl' );
+	define( 'MKV_APPLY_EMAIL', 'job@site.com' );
+}
+
+/** Standaard huisstijlkleuren (gelijk aan de variabelen in assets/vacatures.css). */
+if ( ! defined( 'MKV_DEFAULT_ACCENT' ) ) {
+	define( 'MKV_DEFAULT_ACCENT', '#5E8DF7' ); // --mkv-accent
+}
+if ( ! defined( 'MKV_DEFAULT_CTA' ) ) {
+	define( 'MKV_DEFAULT_CTA', '#00AD6D' ); // --mkv-cta
 }
 
 /** Vertalingen laden (nl_NL, tr_TR, … uit /languages). */
@@ -44,10 +52,61 @@ require_once MKV_PATH . 'includes/meta.php';
 require_once MKV_PATH . 'includes/shortcode.php';
 require_once MKV_PATH . 'includes/settings.php';
 
-/** CSS registreren. */
+/** Hex-kleur valideren (#rgb of #rrggbb). Lege string als ongeldig. */
+function mkv_sanitize_hex_color( $color ) {
+	$color = trim( (string) $color );
+	if ( '' === $color ) {
+		return '';
+	}
+	return preg_match( '/^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$/', $color ) ? $color : '';
+}
+
+/** Hex-kleur donkerder maken (voor hover-/ink-varianten). */
+function mkv_darken_hex( $hex, $percent ) {
+	$hex = ltrim( (string) $hex, '#' );
+	if ( 3 === strlen( $hex ) ) {
+		$hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
+	}
+	if ( 6 !== strlen( $hex ) || ! ctype_xdigit( $hex ) ) {
+		return '#' . $hex;
+	}
+	$factor = 1 - ( max( 0, min( 100, (int) $percent ) ) / 100 );
+	$r      = (int) round( hexdec( substr( $hex, 0, 2 ) ) * $factor );
+	$g      = (int) round( hexdec( substr( $hex, 2, 2 ) ) * $factor );
+	$b      = (int) round( hexdec( substr( $hex, 4, 2 ) ) * $factor );
+	return sprintf( '#%02x%02x%02x', $r, $g, $b );
+}
+
+/**
+ * Inline-CSS die de huisstijlvariabelen overschrijft met de in Instellingen
+ * gekozen kleuren. Lege string als beide op de standaard staan.
+ */
+function mkv_custom_colors_css() {
+	$accent = mkv_sanitize_hex_color( get_option( 'mkv_accent_color' ) );
+	$cta    = mkv_sanitize_hex_color( get_option( 'mkv_cta_color' ) );
+	$vars   = array();
+
+	if ( $accent ) {
+		$vars[] = '--mkv-accent:' . $accent . ';';
+		$vars[] = '--mkv-accent-ink:' . mkv_darken_hex( $accent, 15 ) . ';';
+		$vars[] = '--mkv-blue:' . $accent . ';';
+	}
+	if ( $cta ) {
+		$vars[] = '--mkv-cta:' . $cta . ';';
+		$vars[] = '--mkv-cta-ink:' . mkv_darken_hex( $cta, 12 ) . ';';
+	}
+
+	return $vars ? '.mkv{' . implode( '', $vars ) . '}' : '';
+}
+
+/** CSS registreren (+ eventuele kleur-override als inline-stijl). */
 function mkv_register_style() {
 	if ( ! wp_style_is( 'mkv-style', 'registered' ) ) {
 		wp_register_style( 'mkv-style', MKV_URL . 'assets/vacatures.css', array(), MKV_VERSION );
+		$inline = mkv_custom_colors_css();
+		if ( $inline ) {
+			wp_add_inline_style( 'mkv-style', $inline );
+		}
 	}
 }
 

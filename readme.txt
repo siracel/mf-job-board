@@ -1,7 +1,7 @@
 === MF Job Board (formerly MK Vacatures) ===
 
 Standalone job board plugin. WordPress + Elementor. No external dependencies.
-Version: 1.6.1
+Version: 1.7.0
 
 Languages in this file: English (primary) · Türkçe · Nederlands
 
@@ -9,6 +9,15 @@ Languages in this file: English (primary) · Türkçe · Nederlands
 ##########################################################################
 # ENGLISH
 ##########################################################################
+
+>>> v1.7.0 — colors in settings + generic default email
+- The dominant accent color (--mkv-accent) and the CTA button color (--mkv-cta)
+  are now editable in wp-admin > Vacatures > Instellingen with a color picker.
+  Accent drives the heading rule, bullets, arrow icons and links; CTA drives the
+  apply / open-application buttons. Hover shades are derived automatically. Leave
+  a field empty to keep the CSS default (#5E8DF7 / #00AD6D).
+- The default application email is now generic (job@site.com) instead of a
+  MijnKompaan address. Override it in Settings as before.
 
 >>> v1.6.1 — CLEAN INSTALL
 The plugin no longer creates ANY sample content on first activation. New
@@ -102,6 +111,16 @@ the theme.
 # TÜRKÇE
 ##########################################################################
 
+>>> v1.7.0 — ayarlarda renk + genel varsayılan mail
+- Hakim vurgu rengi (--mkv-accent) ve CTA buton rengi (--mkv-cta) artık
+  wp-admin > Vacatures > Instellingen'de renk seçici ile değiştirilebilir.
+  Accent; başlık çizgisi, madde işaretleri, ok ikonları ve linkleri belirler.
+  CTA; başvuru / açık başvuru butonlarını belirler. Hover tonları otomatik
+  türetilir. Alanı boş bırakırsan CSS varsayılanı geçerli kalır
+  (#5E8DF7 / #00AD6D).
+- Varsayılan başvuru e-postası artık MijnKompaan adresi yerine genel bir adres
+  (job@site.com). Eskisi gibi Ayarlar'dan değiştirilebilir.
+
 >>> v1.6.1 — TEMİZ KURULUM
 Eklenti artık ilk etkinleştirmede HİÇBİR örnek içerik oluşturmaz. Yeni
 kurulumlar boş başlar (Vacatures listesi boş, shortcode "açık pozisyon yok"
@@ -184,6 +203,16 @@ Renkler: assets/vacatures.css en üstteki değişkenler. Font: temadan miras.
 ##########################################################################
 # NEDERLANDS
 ##########################################################################
+
+>>> v1.7.0 — kleuren in instellingen + generiek standaard-e-mailadres
+- De dominante accentkleur (--mkv-accent) en de CTA-knopkleur (--mkv-cta) zijn
+  nu instelbaar in wp-admin > Vacatures > Instellingen met een kleurkiezer.
+  Accent bepaalt de titellijn, opsommingstekens, pijlpictogrammen en links;
+  CTA bepaalt de solliciteer- / open-sollicitatieknoppen. Hover-tinten worden
+  automatisch afgeleid. Laat een veld leeg om de CSS-standaard te behouden
+  (#5E8DF7 / #00AD6D).
+- Het standaard sollicitatie-e-mailadres is nu generiek (job@site.com) in plaats
+  van een MijnKompaan-adres. Pas het zoals voorheen aan in Instellingen.
 
 >>> v1.6.1 — SCHONE INSTALLATIE
 De plugin maakt bij de eerste activering GEEN voorbeeldinhoud meer aan. Nieuwe
