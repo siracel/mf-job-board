@@ -94,7 +94,7 @@ msgid "Questions? Email"
 msgstr "Vragen? Mail"
 
 msgid "Open positions"
-msgstr "Open posities"
+msgstr "Vacatures"
 
 msgid ""
 "There are no open positions at the moment. Check back soon — we are growing "
