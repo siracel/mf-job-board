@@ -3,7 +3,7 @@
  * Plugin Name:       MF Job Board
  * Plugin URI:        https://mfdsgn.com/
  * Description:       Self-contained job board for WordPress + Elementor. No external plugins. Show the list with [mk_vacatures] (alias [mf_jobs]) on a page; the detail page runs through the theme (header, page-banner, footer) with clean content — no post meta or author box. Available in English, Dutch and Turkish.
- * Version:           1.7.0
+ * Version:           1.7.1
  * Author:            MF
  * Text Domain:       mf-job-board
  * Domain Path:       /languages
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MKV_VERSION', '1.7.0' );
+define( 'MKV_VERSION', '1.7.1' );
 define( 'MKV_PATH', plugin_dir_path( __FILE__ ) );
 define( 'MKV_URL', plugin_dir_url( __FILE__ ) );
 
@@ -40,6 +40,19 @@ if ( ! defined( 'MKV_DEFAULT_ACCENT' ) ) {
 if ( ! defined( 'MKV_DEFAULT_CTA' ) ) {
 	define( 'MKV_DEFAULT_CTA', '#00AD6D' ); // --mkv-cta
 }
+
+/**
+ * Hollandaca varianten (nl_NL_formal, nl_BE, …) gebruiken de nl_NL-vertaling.
+ * Zo werkt de plugin ook als de site­taal op "Nederlands (Formeel)" staat,
+ * zonder een aparte .mo per variant bij te houden.
+ */
+function mkv_plugin_locale( $locale, $domain ) {
+	if ( 'mf-job-board' === $domain && 0 === strpos( $locale, 'nl_' ) ) {
+		return 'nl_NL';
+	}
+	return $locale;
+}
+add_filter( 'plugin_locale', 'mkv_plugin_locale', 10, 2 );
 
 /** Vertalingen laden (nl_NL, tr_TR, … uit /languages). */
 function mkv_load_textdomain() {
