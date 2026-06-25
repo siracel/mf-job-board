@@ -24,6 +24,12 @@ function mkv_register_settings() {
 	register_setting( 'mkv_settings', 'mkv_apply_email_opt', array( 'sanitize_callback' => 'sanitize_email', 'default' => '' ) );
 	register_setting( 'mkv_settings', 'mkv_accent_color', array( 'sanitize_callback' => 'mkv_sanitize_hex_color', 'default' => '' ) );
 	register_setting( 'mkv_settings', 'mkv_cta_color', array( 'sanitize_callback' => 'mkv_sanitize_hex_color', 'default' => '' ) );
+
+	// "Open sollicitatie"-blok: vrij in te vullen teksten (leeg = vertaling gebruiken).
+	register_setting( 'mkv_settings', 'mkv_open_title', array( 'sanitize_callback' => 'sanitize_text_field', 'default' => '' ) );
+	register_setting( 'mkv_settings', 'mkv_open_body', array( 'sanitize_callback' => 'sanitize_textarea_field', 'default' => '' ) );
+	register_setting( 'mkv_settings', 'mkv_open_questions', array( 'sanitize_callback' => 'sanitize_text_field', 'default' => '' ) );
+	register_setting( 'mkv_settings', 'mkv_open_btn', array( 'sanitize_callback' => 'sanitize_text_field', 'default' => '' ) );
 }
 add_action( 'admin_init', 'mkv_register_settings' );
 
@@ -46,6 +52,10 @@ function mkv_render_settings_page() {
 	$email      = get_option( 'mkv_apply_email_opt' );
 	$accent     = get_option( 'mkv_accent_color' );
 	$cta        = get_option( 'mkv_cta_color' );
+	$open_title = get_option( 'mkv_open_title' );
+	$open_body  = get_option( 'mkv_open_body' );
+	$open_quest = get_option( 'mkv_open_questions' );
+	$open_btn   = get_option( 'mkv_open_btn' );
 	?>
 	<div class="wrap">
 		<h1><?php esc_html_e( 'MF Job Board — Settings', 'mf-job-board' ); ?></h1>
@@ -93,6 +103,37 @@ function mkv_render_settings_page() {
 					<td>
 						<input type="text" name="mkv_cta_color" id="mkv_cta_color" class="mkv-color-field" value="<?php echo esc_attr( $cta ); ?>" data-default-color="<?php echo esc_attr( MKV_DEFAULT_CTA ); ?>" placeholder="<?php echo esc_attr( MKV_DEFAULT_CTA ); ?>" />
 						<p class="description"><?php esc_html_e( 'Color of the apply / open-application buttons (Solliciteer / Open sollicitatie). Leave empty for the default.', 'mf-job-board' ); ?></p>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row" colspan="2" style="padding-bottom:0;">
+						<h2 style="margin:0;"><?php esc_html_e( '"Open application" block', 'mf-job-board' ); ?></h2>
+						<p class="description" style="font-weight:400;"><?php esc_html_e( 'Texts for the dark call-to-action block at the bottom of the list. Leave a field empty to use the built-in translation.', 'mf-job-board' ); ?></p>
+					</th>
+				</tr>
+				<tr>
+					<th scope="row"><label for="mkv_open_title"><?php esc_html_e( 'Heading', 'mf-job-board' ); ?></label></th>
+					<td>
+						<input type="text" name="mkv_open_title" id="mkv_open_title" class="large-text" value="<?php echo esc_attr( $open_title ); ?>" placeholder="<?php esc_attr_e( "Didn't find a suitable position?", 'mf-job-board' ); ?>" />
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="mkv_open_body"><?php esc_html_e( 'Body text', 'mf-job-board' ); ?></label></th>
+					<td>
+						<textarea name="mkv_open_body" id="mkv_open_body" class="large-text" rows="3" placeholder="<?php esc_attr_e( 'We grow fast and are always looking for new talent. Send an open application and tell us how you help entrepreneurs move forward.', 'mf-job-board' ); ?>"><?php echo esc_textarea( $open_body ); ?></textarea>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="mkv_open_questions"><?php esc_html_e( 'Questions label', 'mf-job-board' ); ?></label></th>
+					<td>
+						<input type="text" name="mkv_open_questions" id="mkv_open_questions" class="regular-text" value="<?php echo esc_attr( $open_quest ); ?>" placeholder="<?php esc_attr_e( 'Questions? Email', 'mf-job-board' ); ?>" />
+						<p class="description"><?php esc_html_e( 'Shown right before the email address.', 'mf-job-board' ); ?></p>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="mkv_open_btn"><?php esc_html_e( 'Button label', 'mf-job-board' ); ?></label></th>
+					<td>
+						<input type="text" name="mkv_open_btn" id="mkv_open_btn" class="regular-text" value="<?php echo esc_attr( $open_btn ); ?>" placeholder="<?php esc_attr_e( 'Open application', 'mf-job-board' ); ?>" />
 					</td>
 				</tr>
 			</table>

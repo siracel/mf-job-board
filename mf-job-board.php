@@ -3,7 +3,7 @@
  * Plugin Name:       MF Job Board
  * Plugin URI:        https://mfdsgn.com/
  * Description:       Self-contained job board for WordPress + Elementor. No external plugins. Show the list with [mk_vacatures] (alias [mf_jobs]) on a page; the detail page runs through the theme (header, page-banner, footer) with clean content — no post meta or author box. Available in English, Dutch and Turkish.
- * Version:           1.7.2
+ * Version:           1.8.0
  * Author:            MF
  * Text Domain:       mf-job-board
  * Domain Path:       /languages
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MKV_VERSION', '1.7.2' );
+define( 'MKV_VERSION', '1.8.0' );
 define( 'MKV_PATH', plugin_dir_path( __FILE__ ) );
 define( 'MKV_URL', plugin_dir_url( __FILE__ ) );
 

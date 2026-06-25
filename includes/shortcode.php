@@ -117,18 +117,38 @@ function mkv_render_row( $post_id, $index ) {
  * ----------------------------------------------------------------------- */
 
 function mkv_render_open_application() {
-	$email  = mkv_apply_email_address( 0 );
-	$mailto = 'mailto:' . antispambot( $email ) . '?subject=' . rawurlencode( __( 'Open application', 'mf-job-board' ) );
+	$email = mkv_apply_email_address( 0 );
+
+	// Vrij in te vullen teksten uit de instellingen; leeg = vertaling als fallback.
+	$title    = trim( (string) get_option( 'mkv_open_title' ) );
+	$body     = trim( (string) get_option( 'mkv_open_body' ) );
+	$questions = trim( (string) get_option( 'mkv_open_questions' ) );
+	$btn      = trim( (string) get_option( 'mkv_open_btn' ) );
+
+	if ( '' === $title ) {
+		$title = __( "Didn't find a suitable position?", 'mf-job-board' );
+	}
+	if ( '' === $body ) {
+		$body = __( 'We grow fast and are always looking for new talent. Send an open application and tell us how you help entrepreneurs move forward.', 'mf-job-board' );
+	}
+	if ( '' === $questions ) {
+		$questions = __( 'Questions? Email', 'mf-job-board' );
+	}
+	if ( '' === $btn ) {
+		$btn = __( 'Open application', 'mf-job-board' );
+	}
+
+	$mailto = 'mailto:' . antispambot( $email ) . '?subject=' . rawurlencode( $btn );
 
 	ob_start();
 	?>
 	<section class="mkv-open">
 		<div class="mkv-open__text">
-			<h2 class="mkv-open__title"><?php esc_html_e( "Didn't find a suitable position?", 'mf-job-board' ); ?></h2>
-			<p><?php esc_html_e( 'We grow fast and are always looking for new talent. Send an open application and tell us how you help entrepreneurs move forward.', 'mf-job-board' ); ?></p>
-			<p class="mkv-open__mail"><?php esc_html_e( 'Questions? Email', 'mf-job-board' ); ?> <a href="<?php echo esc_url( 'mailto:' . antispambot( $email ) ); ?>"><?php echo esc_html( antispambot( $email ) ); ?></a></p>
+			<h2 class="mkv-open__title"><?php echo esc_html( $title ); ?></h2>
+			<p><?php echo nl2br( esc_html( $body ) ); ?></p>
+			<p class="mkv-open__mail"><?php echo esc_html( $questions ); ?> <a href="<?php echo esc_url( 'mailto:' . antispambot( $email ) ); ?>"><?php echo esc_html( antispambot( $email ) ); ?></a></p>
 		</div>
-		<a class="mkv-btn mkv-btn--lg" href="<?php echo esc_url( $mailto ); ?>"><?php esc_html_e( 'Open application', 'mf-job-board' ); ?>
+		<a class="mkv-btn mkv-btn--lg" href="<?php echo esc_url( $mailto ); ?>"><?php echo esc_html( $btn ); ?>
 			<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
 		</a>
 	</section>
